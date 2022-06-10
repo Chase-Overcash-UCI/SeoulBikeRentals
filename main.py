@@ -160,10 +160,6 @@ def main():
                 new_feat[i,j] = np.average([pred_a[i,j], pred_b[i,j]])
         new_xtr[(k-1)*m:k*m,y:] = new_feat
 
-    cascade(Xtr,Ytr,new_xtr, Xte, Yte)
-
-    return
-
     # plt.plot(range(100), pred1[0:100], label = 'Rand. Forest', linestyle = "-")
     # plt.plot(range(100), pred2[0:100], label = 'Extra Trees', linestyle = "--")
     # plt.title('Time Forecasting over Future hours')
@@ -171,27 +167,25 @@ def main():
     # plt.plot(range(x), pred_v2)
     # plt.title('Extra Trees Predicted Bike Rentals Over Date Time')
     # plt.show()
-
-    correct = 0
-    ddf_auc = correct/x1
-    rf_auc = RandomForestClassifier(max_depth=25, random_state=1, n_estimators=100).fit(Xtr,Ytr).score(Xte,Yte)
-    mlp_auc = MLPClassifier(random_state=1, max_iter=1000).fit(Xtr,Ytr).score(Xte,Yte)
-    gbc_auc = GradientBoostingClassifier(random_state=1, max_depth=100).fit(Xtr,Ytr).score(Xte,Yte)
-    auc = [ddf_auc, rf_auc, mlp_auc, gbc_auc]
-    auc_models = ['DDF', 'RF', 'MLP', 'GBP']
-    plt.bar(auc_models,auc, width= .5)
-    plt.title('Training Accuracies of Popular Models Compared To DDF')
+    drf_auc = cascade(Xtr,Ytr,new_xtr, Xte, Yte)
+    rf_auc = RandomForestClassifier(max_depth=5, random_state=1, n_estimators=25).fit(Xtr,Ytr).score(Xte,Yte)
+    mlp_auc = MLPClassifier(random_state=1, max_iter=500).fit(Xtr, Ytr).score(Xte, Yte)
+    gbc_auc = GradientBoostingClassifier(max_depth=5, random_state=1, n_estimators=25).fit(Xtr, Ytr).score(Xte, Yte)
+    aucs = [drf_auc,rf_auc,mlp_auc,gbc_auc]
+    auc_models = ['DRF','RF','MLP','GBC']
+    plt.bar(auc_models, aucs, width=.5)
+    plt.title('Accuracy of models for dataet')
     plt.show()
 
 
 def cascade(X, Y, Xtr, Xte, Yte):
-    x, y = X.shape
+    x, y = Xte.shape
     correct = 0;
     for i in range(x):
         # Step 2, Learn Class Distribution from random forests and extra tree classifiers
         train = X
         test = Xte[i]
-        for j in range(8):
+        for j in range(4):
             rfc1 = RandomForestClassifier(max_depth=5, random_state=1, n_estimators=25).fit(train,Y)
             pred1 = rfc1.predict_proba([test])
             rfc2 = RandomForestClassifier(max_depth=5, random_state=1, n_estimators=25).fit(train,Y)
@@ -207,20 +201,11 @@ def cascade(X, Y, Xtr, Xte, Yte):
             test[0:10] = Xte[i]
             test[10:] = feat
             train = Xtr
-            if j == 7:
+            if j == 3:
                 prediction = statistics.mode([rfc1.predict([test])[0],rfc2.predict([test])[0],etc1.predict([test])[0],etc2.predict([test])[0]])
                 if prediction == Yte[i]:
                     correct+=1
-    print(correct/len(Yte))
-    drf_auc = correct/len(Yte)
-    rf_auc = RandomForestClassifier(max_depth=5, random_state=1, n_estimators=25).fit(Xtr,Ytr).score(Xte,Yte)
-    mlp_auc = MLPClassifier(random_state=1, max_iter=500).fit(Xtr, Ytr).score(Xte, Yte)
-    gbc_auc = GradientBoostingClassifier(max_depth=5, random_state=1, n_estimators=25).fit(Xtr, Ytr).score(Xte, Yte)
-    aucs = [drf_auc,rf_auc,mlp_auc,gbc_auc]
-    auc_models = ['DRF','RF','MLP','GBC']
-    plt.bar(auc_models, aucs, width=.5)
-    plt.tile('Accuracy of models for dataet')
-    plt.show()
+    return(correct/len(Yte))
 
 
 
