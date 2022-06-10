@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="28136741-30c4-444a-ab6f-ff7ba76f122e" name="Changes" comment="data preprocessing complete">
-      <change afterPath="$PROJECT_DIR$/DNN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SeoulBikeRentals.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SeoulBikeRentals.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="28136741-30c4-444a-ab6f-ff7ba76f122e" name="Changes" comment="preprocessing actually complete. code now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/DNN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/x.txt.npy" beforeDir="false" afterPath="$PROJECT_DIR$/x.txt.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/y.txt.npy" beforeDir="false" afterPath="$PROJECT_DIR$/y.txt.npy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +85,7 @@
       <workItem from="1652130128566" duration="982000" />
       <workItem from="1652760513706" duration="14000" />
       <workItem from="1654730867324" duration="9160000" />
-      <workItem from="1654814368179" duration="4593000" />
+      <workItem from="1654814368179" duration="13812000" />
     </task>
     <task id="LOCAL-00001" summary="data preprocessing complete">
       <created>1654741155408</created>
@@ -97,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654741155408</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="preprocessing actually complete. code now">
+      <created>1654820535007</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654820535007</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,9 +121,10 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="data preprocessing complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="data preprocessing complete" />
+    <MESSAGE value="preprocessing actually complete. code now" />
+    <option name="LAST_COMMIT_MESSAGE" value="preprocessing actually complete. code now" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SeoulBikeRentals$main.coverage" NAME="main Coverage Results" MODIFIED="1654818320052" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SeoulBikeRentals$main.coverage" NAME="main Coverage Results" MODIFIED="1654828900478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
